@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="boot/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="awsome/css/font-awesome.min.css" />
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="input-group">
+						<i class="input-group-addon">
+							<span class="icon-user"></span>
+						</i>
+						<input type="text" class="form-control name" placeholder="Username..." />
+					</div>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="input-group">
+						<i class="input-group-addon">
+							<span class="icon-key"></span>
+						</i>
+						<input type="password" class="form-control password" placeholder="Password..." />
+					</div>
+					<hr />
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			<div class="row">
+
+				<div class="col-sm-3"></div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="row" style="padding-bottom: 4px;">
+						<div class="col-xs-12">
+							<input type="radio" />
+							<samll> I have readed the tip</samll>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-warning col-xs-offset-0" type="reset">Reset</button>
+						</div>
+
+					</div>
+					<hr />
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-success col-xs-offset-10 ss" type="submit">GO</button>
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+		</div>
+		<script src="js/jquery-3.2.0min.js"></script>
+		<script src="boot/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(".ss").click(function() {
+				var name=$('.name').val();
+		var password1=$('.password').val();
+				$.ajax({
+					url: '../php/test1.php',
+					type: 'POST', //GET
+					data: {
+						"name": name,
+						"password2": password1
+					},
+					dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+					success: function(data) {
+						if(data.code == 1){
+							window.location.href = "http://www.baidu.com";
+						}
+					    else{
+					    	alert(data.msg);
+					    }
+					},
+				})
+			});
+		</script>
+	</body>
+
+</html>
